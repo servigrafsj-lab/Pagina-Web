@@ -44,11 +44,29 @@
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a {
     color: var(--blanco); text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
     font-weight: 600; font-size: 14px;
     letter-spacing: 0.08em; text-transform: uppercase;
     opacity: 0.85; transition: opacity 0.2s, color 0.2s;
   }
   .nav-links a:hover { opacity: 1; color: var(--amarillo); }
+  .nav-item-drop { position: relative; }
+  .nav-item-drop > a::after { content: " ▾"; font-size: 10px; }
+  .nav-dropdown {
+    display: none; position: absolute; top: 100%; left: 0;
+    background: #111; min-width: 230px;
+    border-top: 2px solid var(--amarillo);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .nav-item-drop:hover .nav-dropdown { display: block; }
+  .nav-dropdown a {
+    display: block; padding: 12px 18px;
+    border-bottom: 1px solid #222; opacity: 1;
+    font-size: 13px; color: var(--blanco); text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+  }
+  .nav-dropdown a:hover { background: #1a1a1a; color: var(--amarillo); }
   .nav-cta {
     background: var(--amarillo) !important; color: var(--negro) !important;
     padding: 8px 18px; border-radius: 2px;
@@ -155,7 +173,7 @@
   }
 
   /* ── POR QUÉ ELEGIRNOS ── */
-  #porque { background: var(--negro); position: relative; overflow: hidden; }
+  #porque { background: var(--gris-claro); position: relative; overflow: hidden; }
   .porque-accent {
     position: absolute; top: 0; left: 0; right: 0; height: 3px;
     background: linear-gradient(90deg, var(--cian), var(--magenta), var(--amarillo));
@@ -170,11 +188,12 @@
   .porque-item:nth-child(3) { border-color: var(--amarillo); }
   .porque-item:nth-child(4) { border-color: var(--cian); }
   .porque-item h3 {
+    font-family: 'Barlow Condensed', sans-serif;
     font-size: 1.1rem; font-weight: 700;
     text-transform: uppercase; letter-spacing: 0.05em;
-    color: var(--blanco); margin-bottom: 0.5rem;
+    color: var(--negro); margin-bottom: 0.5rem;
   }
-  .porque-item p { font-size: 0.9rem; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .porque-item p { font-size: 0.9rem; color: var(--gris-texto); line-height: 1.6; }
 
   /* ── GALERÍA ── */
   #galeria { background: var(--gris-claro); }
@@ -296,7 +315,13 @@
     <img src="logo.png" alt="ServiGraf – Imprenta Digital">
   </div>
   <ul class="nav-links">
-    <li><a href="#servicios">Servicios</a></li>
+    <li class="nav-item-drop">
+      <a href="#servicios">Servicios</a>
+      <div class="nav-dropdown">
+        <a href="servicios/bolsas-papel.html">🛍️ Bolsas de papel impresas</a>
+        <a href="servicios/bolsas-friselina.html">👕 Bolsas de friselina</a>
+      </div>
+    </li>
     <li><a href="#galeria">Trabajos</a></li>
     <li><a href="#contacto">Contacto</a></li>
     <li><a href="https://wa.me/5492645234646?text=Hola!%20Quisiera%20un%20presupuesto" class="nav-cta">Presupuesto</a></li>
@@ -345,16 +370,18 @@
   <div class="services-grid">
 
     <!-- SERVICIOS PROPIOS -->
-    <div class="service-card">
+    <a href="servicios/bolsas-papel.html" class="service-card" style="text-decoration:none;cursor:pointer">
       <span class="service-icon">🛍️</span>
       <h3>Bolsas de papel impresas</h3>
       <p>Serigrafía sobre bolsas blancas. Hasta 19×30×10 cm. Ideales para comercios y eventos.</p>
-    </div>
-    <div class="service-card">
+      <p style="margin-top:0.75rem;font-size:0.8rem;color:var(--cian);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:0.1em;text-transform:uppercase">Ver detalles →</p>
+    </a>
+    <a href="servicios/bolsas-friselina.html" class="service-card" style="text-decoration:none;cursor:pointer">
       <span class="service-icon">👕</span>
       <h3>Bolsas de friselina</h3>
       <p>Bolsas serigrafiadas en friselina. Producto sustentable y de calidad.</p>
-    </div>
+      <p style="margin-top:0.75rem;font-size:0.8rem;color:var(--cian);font-family:'Barlow Condensed',sans-serif;font-weight:700;letter-spacing:0.1em;text-transform:uppercase">Ver detalles →</p>
+    </a>
     <div class="service-card">
       <span class="service-icon">🖨️</span>
       <h3>Flyers inkjet 80g</h3>
@@ -444,8 +471,8 @@
 <!-- ═══════════════════════════════════════════════════════ POR QUÉ ELEGIRNOS -->
 <section id="porque">
   <div class="porque-accent"></div>
-  <p class="section-label" style="color:var(--cian)">Nuestra diferencia</p>
-  <h2 class="section-title section-title-light">Por qué elegirnos</h2>
+  <p class="section-label">Nuestra diferencia</p>
+  <h2 class="section-title">Por qué elegirnos</h2>
   <div class="section-divider">
     <span style="width:32px;background:var(--cian)"></span>
     <span style="width:32px;background:var(--magenta)"></span>
